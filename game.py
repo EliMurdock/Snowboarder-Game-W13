@@ -1,6 +1,7 @@
 import turtle
 import random
 import time
+import winsound
 
 from sympy import Q
 
@@ -126,6 +127,17 @@ player_speed = 8
 obstacle_delay = 25
 speedup_rate = 0.5
 
+
+#function for playing music
+def play_background_music(sound_file, time = 0):
+    winsound.PlaySound(sound_file, winsound.SND_ASYNC)
+    if time > 0:
+        turtle.ontimer(lambda: play_background_music(sound_file, time), t = int(time * 1000))
+#duration of the music selected
+length_of_wav_file = 58
+
+#playing music
+play_background_music("Snowboarder-Game/RockInstrumental.wav", length_of_wav_file)
 
 # jump function sets the vertical velocity
 def jump():
